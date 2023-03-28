@@ -27,10 +27,15 @@
         {
             keep_play = false;
         }
+        if(p1_card.getRank() == p2_card.getRank())
+        {
+            rounds++;
+        }
+        updadePoints(p1_card, p2_card, rounds);
         
         pair<Card, Card> cardPair(p1_card, p2_card);
         log.push_back(cardPair);
-
+        
 
      }
 
@@ -164,5 +169,18 @@
      }
     }
 
+    void Game::updadePoints(Card c_1, Card c_2, int points)
+    {
+          if( c_1.getRank() > c_2.getRank() )
+        {
+            p1.setPoints(points);
+            rounds = 0;
+        }
+        else if (c_1.getRank() < c_2.getRank())
+        {
+            p2.setPoints(points);
+            rounds = 0;
+        }
+    }
 
  }

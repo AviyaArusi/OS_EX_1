@@ -18,6 +18,7 @@ namespace ariel{
         vector<pair<Card, Card>> log; // All the turn one after another.
         vector<Card> card_pack;      // Hold the full pack in the start of the Game.
         bool keep_play;
+        int rounds;
     public:
         // Constructor's
         Game();
@@ -35,6 +36,7 @@ namespace ariel{
         void shuffle_pack();
         void deal_pack();
         string dictionary(int);
+        void updadePoints(Card, Card, int);
 
     };
 
