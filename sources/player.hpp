@@ -1,0 +1,28 @@
+#ifndef EX_1_PLAYER_H
+#define EX_1_PLAYER_H
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include "card.hpp"
+
+
+using namespace std;
+namespace ariel{
+
+    class Player {
+    private:
+        string name;
+        vector <Card> card_pack;
+
+    public:
+        Player();
+        Player(const string);
+        int stacksize();
+        int cardesTaken();
+
+        //*****
+        void addCard(Card);
+    };
+}
+#endif //EX_1_PLAYER_H
