@@ -16,7 +16,7 @@ namespace ariel{
     }
     int Player::cardesTaken()
     {
-        return points;
+        return points/2;
     }
 
 
@@ -26,7 +26,7 @@ namespace ariel{
     }
     void Player::setPoints(int add)
     {
-        points += add;
+        points += add*2;
     }
 
     Card Player::playTurn()
