@@ -60,6 +60,7 @@ namespace ariel{
             return "SPADES";
         default:
             // handle invalid input
+            return "AAAAAA";
      }
     }
 

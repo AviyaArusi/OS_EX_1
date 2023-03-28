@@ -33,8 +33,17 @@ namespace ariel{
     {
         if(card_pack.size() > 0) // Check what hepennd if 0 < ??
         {
-            return card_pack[0];
+            // return card_pack[0]; ******************************************
         }
+        size_t last_index = card_pack.size()-1;
+        Card ans = card_pack[last_index];
+        card_pack.pop_back();
+        return ans;
+    }
+
+    string Player::getName()
+    {
+        return name;
     }
 
 }

@@ -44,7 +44,18 @@
 
      void Game::printWiner()
      {
-
+        if( p1.cardesTaken() == p2.cardesTaken() )
+        {
+            cout << "Tai!" << endl;
+        }
+        else if (p1.cardesTaken() > p2.cardesTaken())
+        {
+            cout << "The winner is :" << p1.getName() << " !" << endl;
+        }
+        else 
+        {
+            cout << "The winner is :" << p2.getName() << " !" << endl;
+        }
      }
 
      void Game::printLog()
@@ -64,7 +75,7 @@
      }
      void Game::printLastTurn()
      {
-        int last_index = log.size()-1;
+        size_t last_index = log.size()-1;
         pair<Card, Card> cardPair = log[last_index];
         cout << "Player_1 card is: (" << dictionary(cardPair.first.getRank()) << ", " << dictionary(cardPair.first.getType()) 
         << ") Player_2 card is: (" << dictionary(cardPair.second.getRank()) << ", " << dictionary(cardPair.second.getType()) << ")" << endl;
@@ -89,15 +100,15 @@
              int r = rand() % 52;
              int l = rand() % 52;
              // make swap between the indexes.
-             Card temp = card_pack[r];
-             card_pack[r] = card_pack[l];
-             card_pack[l] = temp;
+             Card temp = card_pack[static_cast<std::vector<Card>::size_type>(r)];
+             card_pack[static_cast<std::vector<Card>::size_type>(r)] = card_pack[static_cast<std::vector<Card>::size_type>(l)];
+             card_pack[static_cast<std::vector<Card>::size_type>(l)] = temp;
          }
      }
 
      void Game::deal_pack()
      {
-         for (int i = 0; i < 52; ++i) {
+         for (size_t i = 0; i < 52; ++i) {
              if (i % 2 == 0)
              {
                  p1.addCard(card_pack[i]);
@@ -109,9 +120,10 @@
          }
      }
 
-      string Card::dictionary(int input)
+      string Game::dictionary(int input)
     {
-        switch(input) {
+        switch(input) 
+        {
         case 1:
             return "ACE";
         case 2:
@@ -148,6 +160,7 @@
             return "SPADES";
         default:
             // handle invalid input
+            return "aaaaaaa";
      }
     }
 
