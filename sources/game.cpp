@@ -11,21 +11,35 @@
      {
         this->p1 = p1;
         this->p2 = p2;
-
+        keep_play = true;
+        reset_pack();
+        shuffle_pack();
+        deal_pack();
      }
 
      void Game::playTurn()
      {
+        if(keep_play == false) 
+            return;
         Card p1_card = p1.playTurn();
         Card p2_card = p2.playTurn();
-        log.push_back(p1_card, p2_card);
+        if ( (p1.stacksize() == 0) && (p1_card.getRank() != p2_card.getRank()) )
+        {
+            keep_play = false;
+        }
+        
+        pair<Card, Card> cardPair(p1_card, p2_card);
+        log.push_back(cardPair);
 
 
      }
 
      void Game::playAll()
      {
-
+        while (keep_play != false)
+        {
+            playTurn();
+        }
      }
 
      void Game::printWiner()
@@ -35,6 +49,12 @@
 
      void Game::printLog()
      {
+        for (size_t i = 0; i < log.size(); i++)
+        {
+            pair<Card, Card> cardPair = log[i];
+            cout << "Round " << i << "--> Player_1 card is: (" << dictionary(cardPair.first.getRank()) << ", " << dictionary(cardPair.first.getType()) 
+        << ") Player_2 card is: (" << dictionary(cardPair.second.getRank()) << ", " << dictionary(cardPair.second.getType()) << ")" << endl;
+        }
 
      }
 
@@ -44,6 +64,10 @@
      }
      void Game::printLastTurn()
      {
+        int last_index = log.size()-1;
+        pair<Card, Card> cardPair = log[last_index];
+        cout << "Player_1 card is: (" << dictionary(cardPair.first.getRank()) << ", " << dictionary(cardPair.first.getType()) 
+        << ") Player_2 card is: (" << dictionary(cardPair.second.getRank()) << ", " << dictionary(cardPair.second.getType()) << ")" << endl;
 
      }
 
@@ -84,6 +108,48 @@
              }
          }
      }
+
+      string Card::dictionary(int input)
+    {
+        switch(input) {
+        case 1:
+            return "ACE";
+        case 2:
+            return "TWO";
+        case 3:
+            return "THREE";
+        case 4:
+            return "FOUR";
+        case 5:
+            return "FIVE";
+        case 6:
+            return "SIX";
+         case 7:
+            return "SEVEN";
+        case 8:
+            return "EIGHT";
+        case 9:
+            return "NINE";
+         case 10:
+            return "TEN";
+        case 11:
+            return "JACK";
+        case 12:
+            return "QUEEN";
+         case 13:
+            return "KING";
+        case 14:
+            return "HEARTS";
+        case 15:
+            return "DIAMONDS";
+         case 16:
+            return "CLUBS";
+        case 17:
+            return "SPADES";
+        default:
+            // handle invalid input
+     }
+    }
 
 
  }
