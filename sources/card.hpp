@@ -9,16 +9,17 @@ namespace ariel{
 
     class Card
     {
-        enum Rank { ACE=1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING };
-        enum Type { HEARTS=14, DIAMONDS, CLUBS, SPADES };
+        // enum Rank { ACE=1, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING };
+        // enum Type { HEARTS=14, DIAMONDS, CLUBS, SPADES };
     private:
-        Rank rank;
-        Type type;
+        int rank;
+        int type;
     public:
         Card();
-        Card(Rank, Type);
-        Rank getRank();
-        Type getType();
+        Card(int, int);
+        int getRank();
+        int getType();
+        string dictionary(int);
     };
 }
 

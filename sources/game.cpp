@@ -1,21 +1,25 @@
 #include "game.hpp"
 #include "player.hpp"
 #include "card.hpp"
-#include <vector>
- using namespace std;
+// #include <vector>
+//  using namespace std;
  namespace ariel {
-//fun banana bla
-    Game::Game()
-    {
 
-    }
+    Game::Game() {}
+
      Game::Game(Player& p1, Player& p2)
      {
+        this->p1 = p1;
+        this->p2 = p2;
 
      }
 
      void Game::playTurn()
      {
+        Card p1_card = p1.playTurn();
+        Card p2_card = p2.playTurn();
+        log.push_back(p1_card, p2_card);
+
 
      }
 
@@ -49,9 +53,7 @@
          {
              for (int type = 14; type < 18 ; ++type)
              {
-                 card_pack.push_back(Card(rank, type));
-
-
+                card_pack.push_back(Card(rank, type));
              }
          }
      }
@@ -74,11 +76,11 @@
          for (int i = 0; i < 52; ++i) {
              if (i % 2 == 0)
              {
-                 p1.addCard(deck[i]);
+                 p1.addCard(card_pack[i]);
              }
              else
              {
-                 p2.addCard(deck[i]);
+                 p2.addCard(card_pack[i]);
              }
          }
      }
