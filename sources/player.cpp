@@ -53,9 +53,9 @@ namespace ariel{
              int r = rand() % int(card_pack.size());
              int l = rand() % int(card_pack.size());
              // make swap between the indexes.
-             Card temp = card_pack[static_cast<std::vector<Card>::size_type>(r)];
-             card_pack[static_cast<std::vector<Card>::size_type>(r)] = card_pack[static_cast<std::vector<Card>::size_type>(l)];
-             card_pack[static_cast<std::vector<Card>::size_type>(l)] = temp;
+             Card temp = card_pack[size_t(r)];
+             card_pack[size_t(r)] = card_pack[size_t(l)];
+             card_pack[size_t(l)] = temp;
          }
      }
 

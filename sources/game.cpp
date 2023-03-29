@@ -116,9 +116,9 @@
              int r = rand() % 52;
              int l = rand() % 52;
              // make swap between the indexes.
-             Card temp = card_pack[static_cast<std::vector<Card>::size_type>(r)];
-             card_pack[static_cast<std::vector<Card>::size_type>(r)] = card_pack[static_cast<std::vector<Card>::size_type>(l)];
-             card_pack[static_cast<std::vector<Card>::size_type>(l)] = temp;
+             Card temp = card_pack[size_t(r)];
+             card_pack[size_t(r)] = card_pack[size_t(l)];
+             card_pack[size_t(l)] = temp;
          }
      }
 
@@ -194,10 +194,10 @@
         }
     }
 
-    void Game::drawEnd()
+    void Game::drawEnd() //*********************************** check the darw_rounds!!
     {
         size_t index = log.size()-1;
-        for (size_t i = 0; i < (draw_rounds*3) ; i++)
+        for (size_t i = 0; i < (draw_rounds*3)-1 ; i++)
         {
             p1.addCard(log[index].first);
             p2.addCard(log[index].second);
