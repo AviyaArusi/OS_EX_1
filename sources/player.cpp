@@ -24,6 +24,7 @@ namespace ariel{
     {
         card_pack.push_back(card);
     }
+    
     void Player::setPoints(int add)
     {
         points += add*2;

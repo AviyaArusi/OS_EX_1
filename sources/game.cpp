@@ -7,10 +7,10 @@
 
     Game::Game() {}
 
-     Game::Game(Player& p1, Player& p2) // check about 2 identicle names.
+     Game::Game(Player& player1, Player& player2) // check about 2 identicle names.
      {
-        this->p1 = p1;
-        this->p2 = p2;
+        this->p1 = player1;
+        this->p2 = player2;
         keep_play = true;
         game_status = false;
         reset_pack();
