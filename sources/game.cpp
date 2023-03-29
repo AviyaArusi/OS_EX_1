@@ -7,17 +7,18 @@
 
     Game::Game() {}
 
-     Game::Game(Player& p1, Player& p2)
+     Game::Game(Player& p1, Player& p2) // check about 2 identicle names.
      {
         this->p1 = p1;
         this->p2 = p2;
         keep_play = true;
+        game_status = false;
         reset_pack();
         shuffle_pack();
         deal_pack();
      }
 
-     void Game::playTurn()
+     void Game::playTurn() // add exception
      {
         if(keep_play == false) 
             return;
@@ -58,7 +59,7 @@
         }
      }
 
-     void Game::printWiner()
+     void Game::printWiner() // add exception
      {
         if( p1.cardesTaken() == p2.cardesTaken() )
         {
@@ -74,7 +75,7 @@
         }
      }
 
-     void Game::printLog()
+     void Game::printLog() // add exception
      {
         for (size_t i = 0; i < log.size(); i++)
         {
@@ -89,7 +90,7 @@
      {
 
      }
-     void Game::printLastTurn()
+     void Game::printLastTurn()// add exception!
      {
         size_t last_index = log.size()-1;
         pair<Card, Card> cardPair = log[last_index];

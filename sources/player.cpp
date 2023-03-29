@@ -5,7 +5,7 @@ namespace ariel{
     {
 
     }
-    Player::Player(const string name)
+    Player::Player(string name)
     {
         this->name = name;
         points = 0;
