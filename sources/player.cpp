@@ -5,7 +5,7 @@ namespace ariel{
     {
 
     }
-    Player::Player(string name)
+    Player::Player(string name) // throw exception " "
     {
         this->name = name;
         points = 0;
