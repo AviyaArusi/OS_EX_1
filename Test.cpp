@@ -67,7 +67,7 @@ TEST_CASE("Creat Game 2")
     // Test_: cant't enter the same Player twice.
     CHECK_THROWS(Game(aviya, aviya));
 
-    //Test_: check that 1 player cant play at 2 difference game at the same time.
+    //Test_: check that 1 player can't play at 2 difference game at the same time.
     CHECK_THROWS(Game(aviya, bob));
 
     game.playAll(); // end the game.
@@ -91,7 +91,7 @@ TEST_CASE("In the game 1")
     CHECK_NOTHROW(game.printLog());
     
     // Test_: can printLastTurn() after playing some turns.
-    CHECK_THROWS(game.printLastTurn());
+    CHECK_NOTHROW(game.printLastTurn());
 
     // Test_: after play turn chek that one of the data membes is changed ->
     //                       Player_1.cardsTaken() || Player_2.cardsTaken(). 
