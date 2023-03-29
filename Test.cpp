@@ -34,20 +34,21 @@ TEST_CASE("Creat Game")
     Player bob("Bob");
     Game game(alice, bob);
     // Test_: creat Game end check it not null --> if we can use some function from game it is not null.
-    // CHECK_NOTHROW(game.printStats());
+    CHECK_NOTHROW(game.printStats());
 
     // Test_: printLastTurn() before playing any turn and catch exception.
-    // CHECK_THROWS(game.printLastTurn());
+    CHECK_THROWS(game.printLastTurn());
 
     // Test_: printLog() before played any turn and catch exception.
-    // CHECK_THROWS(game.printLog());
+    CHECK_THROWS(game.printLog());
 
     // Test_: printWinner() before the end of the game and catch exception.
-    // CHECK_THROWS(game.printWiner());
+    CHECK_THROWS(game.printWiner());
 
     // Tset_:  check for equal number of cards for every player after the start of the game 
     //                                   Player_1.stackSize() == Player_1.stackSize() == 26.
     CHECK(alice.stacksize() == bob.stacksize());
+    // cout << "in the test class -->" <<  alice.stacksize() << endl; //****************************************************
     CHECK(alice.stacksize() == 26);
 }
 
@@ -60,25 +61,22 @@ TEST_CASE("In the game")
     // Test_: play turn and chek that one of the data membes is changed ->
     //                       Player_1.cardsTaken() || Player_2.cardsTaken(). 
     game.playTurn();
-    // CHECK( ( (alice.cardesTaken() > 0) || (bob.cardesTaken() > 0) ));
+    CHECK( ( (alice.cardesTaken() > 0) || (bob.cardesTaken() > 0) ));
 
     // Test_: paly 5 turn and check Player_1.stackSize() == Player_1.stackSize().
     for (size_t i = 0; i < 5; i++)
     {
         game.playTurn();
-        // CHECK( alice.stacksize() == bob.stacksize() );
-
+        CHECK( alice.stacksize() == bob.stacksize() );
+    }
     game.playAll();
     // Test_: playAll() and after that check that Player_1.stackSize() == Player_2.stackSize() == 0.
-    // CHECK(alice.stacksize() == bob.stacksize() );
-    // CHECK(alice.stacksize() == 0);
-    
+    CHECK(alice.stacksize() == bob.stacksize() );
+    CHECK(alice.stacksize() == 0);
+
     // Test_: palyAll() and after that palyTurn(), catch exception.
     // CHECK_THROW(game.playTurn());
-    }
+    
     
 }
 
-
-// Test_: play some turns then check if Player_1.stackSize() + Player_1.cardsTaken() +
-//                                      Player_2.stackSize() + Player_2.cardsTaken() == 52.

@@ -7,7 +7,7 @@
 
     Game::Game() {}
 
-     Game::Game(Player& player1, Player& player2) // check about 2 identicle names.
+     Game::Game(Player& player1, Player& player2)  // check about 2 identicle names.
      {
         this->p1 = player1;
         this->p2 = player2;
@@ -16,6 +16,8 @@
         reset_pack();
         shuffle_pack();
         deal_pack();
+        // cout << p1.getName() << endl;
+        // cout << p1.stacksize() << endl; //****************************************************
      }
 
      void Game::playTurn() // add exception
@@ -125,7 +127,8 @@
 
      void Game::deal_pack()
      {
-         for (size_t i = 0; i < 52; ++i) {
+         for (size_t i = 0; i < 52; ++i)
+          {
              if (i % 2 == 0)
              {
                  p1.addCard(card_pack[i]);
