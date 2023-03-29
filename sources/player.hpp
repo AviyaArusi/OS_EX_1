@@ -27,6 +27,7 @@ namespace ariel{
         void setPoints(int);
         Card playTurn();
         string getName();
+        void shuffle_pack();
     };
 }
 #endif //EX_1_PLAYER_H

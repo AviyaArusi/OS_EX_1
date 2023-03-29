@@ -31,7 +31,7 @@ namespace ariel{
 
     Card Player::playTurn()
     {
-        if(card_pack.size() > 0) // Check what hepennd if 0 < ??
+        if(card_pack.size() < 0) // Check what hepennd if 0 < ??
         {
             // return card_pack[0]; ******************************************
         }
@@ -45,5 +45,18 @@ namespace ariel{
     {
         return name;
     }
+
+     void Player::shuffle_pack()
+     {
+         srand((unsigned) time(NULL));   // Providing a seed value
+         for (int i = 0; i < 50; ++i) {
+             int r = rand() % int(card_pack.size());
+             int l = rand() % int(card_pack.size());
+             // make swap between the indexes.
+             Card temp = card_pack[static_cast<std::vector<Card>::size_type>(r)];
+             card_pack[static_cast<std::vector<Card>::size_type>(r)] = card_pack[static_cast<std::vector<Card>::size_type>(l)];
+             card_pack[static_cast<std::vector<Card>::size_type>(l)] = temp;
+         }
+     }
 
 }

@@ -27,16 +27,27 @@
         {
             keep_play = false;
         }
+        else if (  ( (p1.stacksize() == 0) || (p1.stacksize() == 1) ) && (draw_rounds == 0)  && (p1_card.getRank() == p2_card.getRank()) ) 
+        {
+            // End the game
+            pair<Card, Card> cardPair(p1_card, p2_card);
+            log.push_back(cardPair);
+            keep_play = false;
+            return;
+        }
+        else if ((p1.stacksize() == 0) && (p1_card.getRank() == p2_card.getRank()) )
+        // Take back the pack suffule it and paly again until the game over.
+        {
+            drawEnd();
+        }
         if(p1_card.getRank() == p2_card.getRank())
         {
-            rounds++;
+            draw_rounds++;
         }
-        updadePoints(p1_card, p2_card, rounds);
+        updadePoints(p1_card, p2_card, draw_rounds);
         
         pair<Card, Card> cardPair(p1_card, p2_card);
         log.push_back(cardPair);
-        
-
      }
 
      void Game::playAll()
@@ -174,13 +185,26 @@
           if( c_1.getRank() > c_2.getRank() )
         {
             p1.setPoints(points);
-            rounds = 0;
+            draw_rounds = 0;
         }
         else if (c_1.getRank() < c_2.getRank())
         {
             p2.setPoints(points);
-            rounds = 0;
+            draw_rounds = 0;
         }
+    }
+
+    void Game::drawEnd()
+    {
+        size_t index = log.size()-1;
+        for (size_t i = 0; i < (draw_rounds*3) ; i++)
+        {
+            p1.addCard(log[index].first);
+            p2.addCard(log[index].second);
+            index -= 1;
+        }
+        p1.shuffle_pack();
+        p2.shuffle_pack();
     }
 
  }
