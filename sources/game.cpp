@@ -5,12 +5,15 @@
 //  using namespace std;
  namespace ariel {
 
-    Game::Game() {}
+    // Game::Game() {}
 
      Game::Game(Player& player1, Player& player2)  // check about 2 identicle names.
+     : p1(player1), p2(player2) 
      {
-        this->p1 = player1;
-        this->p2 = player2;
+        if (&p1 == &p2)
+        {
+            throw invalid_argument("There most be 2 diffrence Players!");
+        }
         keep_play = true;
         game_status = false;
         reset_pack();
@@ -28,7 +31,7 @@
         Card p2_card = p2.playTurn();
         if ( (p1.stacksize() == 0) && (p1_card.getRank() != p2_card.getRank()) )
         {
-            keep_play = false;
+            keep_play = false; // The end of the game.
         }
         else if (  ( (p1.stacksize() == 0) || (p1.stacksize() == 1) ) && (draw_rounds == 0)  && (p1_card.getRank() == p2_card.getRank()) ) 
         {
@@ -61,7 +64,7 @@
         }
      }
 
-     void Game::printWiner() // add exception
+     void Game::printWiner() const // add exception
      {
         if( p1.cardesTaken() == p2.cardesTaken() )
         {
@@ -77,7 +80,7 @@
         }
      }
 
-     void Game::printLog() // add exception
+     void Game::printLog() const // add exception
      {
         for (size_t i = 0; i < log.size(); i++)
         {
@@ -88,11 +91,11 @@
 
      }
 
-     void Game::printStats()
+     void Game::printStats() const
      {
 
      }
-     void Game::printLastTurn()// add exception!
+     void Game::printLastTurn() const // add exception! ** only turn that somebody win! **
      {
         size_t last_index = log.size()-1;
         pair<Card, Card> cardPair = log[last_index];

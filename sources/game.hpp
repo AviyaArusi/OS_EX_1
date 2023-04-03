@@ -14,7 +14,8 @@ namespace ariel{
 
     class Game{
     private:
-        Player p1, p2;                 // The 2 player of the game.
+        Player& p1;
+        Player& p2;                 // The 2 player of the game.
         vector<pair<Card, Card>> log; // All the turn one after another.
         vector<Card> card_pack;      // Hold the full pack in the start of the Game.
         bool keep_play;
@@ -26,11 +27,11 @@ namespace ariel{
         Game(Player&, Player&);
 
         void playTurn();
-        void printLastTurn();
+        void printLastTurn() const;
         void playAll();
         void printWiner();
-        void printLog();
-        void printStats();
+        void printLog() const;
+        void printStats() const;
 
         //***
         void reset_pack();

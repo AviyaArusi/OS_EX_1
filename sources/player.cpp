@@ -10,11 +10,13 @@ namespace ariel{
         this->name = name;
         points = 0;
     }
-    int Player::stacksize()
+
+    int Player::stacksize() const
     {
         return card_pack.size();
     }
-    int Player::cardesTaken()
+
+    int Player::cardesTaken() const
     {
         return points/2;
     }
@@ -32,9 +34,9 @@ namespace ariel{
 
     Card Player::playTurn()
     {
-        if(card_pack.size() < 0) // Check what hepennd if 0 < ??
+        if(card_pack.size() <= 0) // Check what hepennd if 0 < ??
         {
-            // return card_pack[0]; ******************************************
+            throw exception("There is nothing to play! ");
         }
         size_t last_index = card_pack.size()-1;
         Card ans = card_pack[last_index];
@@ -42,7 +44,7 @@ namespace ariel{
         return ans;
     }
 
-    string Player::getName()
+    string Player::getName() const
     {
         return name;
     }

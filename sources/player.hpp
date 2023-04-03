@@ -19,14 +19,14 @@ namespace ariel{
     public:
         Player();
         Player(string);
-        int stacksize();
-        int cardesTaken();
+        int stacksize() const;
+        int cardesTaken()const;
 
         //*****
         void addCard(Card);
         void setPoints(int);
         Card playTurn();
-        string getName();
+        string getName() const;
         void shuffle_pack();
     };
 }
