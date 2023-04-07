@@ -36,7 +36,7 @@ namespace ariel{
     {
         if(card_pack.size() <= 0) // Check what hepennd if 0 < ??
         {
-            throw exception("There is nothing to play! ");
+            // throw exception("There is nothing to play!");
         }
         size_t last_index = card_pack.size()-1;
         Card ans = card_pack[last_index];

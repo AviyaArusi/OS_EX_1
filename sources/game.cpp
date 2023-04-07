@@ -143,7 +143,7 @@
          }
      }
 
-      string Game::dictionary(int input)
+      string Game::dictionary(int input) const
     {
         switch(input) 
         {
@@ -183,7 +183,7 @@
             return "SPADES";
         default:
             // handle invalid input
-            return "aaaaaaa";
+            throw runtime_error("Invalid input!");
      }
     }
 

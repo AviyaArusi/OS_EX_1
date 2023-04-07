@@ -5,7 +5,8 @@
 #include <utility>
 #include <string>
 #include <iostream>
-#include <cstdlib> // For the random number
+#include <cstdlib> // For the random number.
+#include <stdexcept> // For the exception.
 #include "player.hpp"
 #include "card.hpp"
 
@@ -29,7 +30,7 @@ namespace ariel{
         void playTurn();
         void printLastTurn() const;
         void playAll();
-        void printWiner();
+        void printWiner() const;
         void printLog() const;
         void printStats() const;
 
@@ -37,7 +38,7 @@ namespace ariel{
         void reset_pack();
         void shuffle_pack();
         void deal_pack();
-        string dictionary(int);
+        string dictionary(int) const;
         void updadePoints(Card, Card, int);
         void drawEnd();
 
