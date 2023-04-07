@@ -20,8 +20,8 @@ namespace ariel{
         vector<pair<Card, Card>> log; // All the turn one after another.
         vector<Card> card_pack;      // Hold the full pack in the start of the Game.
         bool keep_play;
-        bool game_status;
         int draw_rounds;
+        int draw_points_counter;
     public:
         // Constructor's
         Game();
@@ -39,9 +39,7 @@ namespace ariel{
         void shuffle_pack();
         void deal_pack();
         string dictionary(int) const;
-        void updadePoints(Card, Card, int);
-        void drawEnd();
-
+        void updadePoints(Card, Card);
     };
 
 }

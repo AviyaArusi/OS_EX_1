@@ -14,6 +14,7 @@ namespace ariel{
     private:
         string name;
         int points;
+        int cards_won;
         vector <Card> card_pack;
 
     public:
@@ -27,7 +28,8 @@ namespace ariel{
         void setPoints(int);
         Card playTurn();
         string getName() const;
-        void shuffle_pack();
+        int getCardsWon() const;
+        // void shuffle_pack();
     };
 }
 #endif //EX_1_PLAYER_H

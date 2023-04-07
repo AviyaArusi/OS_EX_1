@@ -9,6 +9,7 @@ namespace ariel{
     {
         this->name = name;
         points = 0;
+        cards_won = 0;
     }
 
     int Player::stacksize() const
@@ -18,7 +19,7 @@ namespace ariel{
 
     int Player::cardesTaken() const
     {
-        return points/2;
+        return points;
     }
 
 
@@ -29,14 +30,15 @@ namespace ariel{
 
     void Player::setPoints(int add)
     {
-        points += add*2;
+        cards_won += 1;
+        points += add;
     }
 
     Card Player::playTurn()
     {
         if(card_pack.size() <= 0) // Check what hepennd if 0 < ??
         {
-            // throw exception("There is nothing to play!");
+            throw runtime_error("There is nothing to play!");
         }
         size_t last_index = card_pack.size()-1;
         Card ans = card_pack[last_index];
@@ -49,17 +51,22 @@ namespace ariel{
         return name;
     }
 
-     void Player::shuffle_pack()
-     {
-         srand((unsigned) time(NULL));   // Providing a seed value
-         for (int i = 0; i < 50; ++i) {
-             int r = rand() % int(card_pack.size());
-             int l = rand() % int(card_pack.size());
-             // make swap between the indexes.
-             Card temp = card_pack[size_t(r)];
-             card_pack[size_t(r)] = card_pack[size_t(l)];
-             card_pack[size_t(l)] = temp;
-         }
-     }
+    int Player::getCardsWon() const
+    {
+        return cards_won;
+    }
+
+    //  void Player::shuffle_pack()
+    //  {
+    //      srand((unsigned) time(NULL));   // Providing a seed value
+    //      for (int i = 0; i < 50; ++i) {
+    //          int r = rand() % int(card_pack.size());
+    //          int l = rand() % int(card_pack.size());
+    //          // make swap between the indexes.
+    //          Card temp = card_pack[size_t(r)];
+    //          card_pack[size_t(r)] = card_pack[size_t(l)];
+    //          card_pack[size_t(l)] = temp;
+    //      }
+    //  }
 
 }
